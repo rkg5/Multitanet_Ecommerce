@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: ecommerce-app
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/myapp
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: myuser
+    password: mypassword
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/realms/ecommerce-realm
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
